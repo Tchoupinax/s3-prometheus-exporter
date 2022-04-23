@@ -1,4 +1,4 @@
-interface S3Object {
+export interface S3Object {
   Key: string;
   LastModified: string;
   Etag: string;

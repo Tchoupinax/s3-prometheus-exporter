@@ -1,28 +1,31 @@
 import * as AWS_SDK from 'aws-sdk'
 import Metric from './metrics/metric';
+import { S3Object } from './types/S3Object';
+import * as config from 'config';
 
 export default async function (plugins: InstanceType<typeof Metric>[]) {
-  const files = await listAllContents({ Bucket: "drone-production" });
+  const files = await listAllContents({ Bucket: config.get('bucket') });
 
   for (let i = 0; i < plugins.length; i++) {
-    plugins[i].getMesure().set(plugins[i].process(files));
+    const prefix = plugins[i].getPrefix();
+    plugins[i].getMesure().set(plugins[i].process(files.filter(file => file.Key.includes(prefix))));
   }
 }
 
 async function listAllContents({ Bucket, Prefix }: any): Promise<S3Object[]> {
   let list: S3Object[] = [];
-  let shouldContinue: boolean = true;
+  let shouldContinue = true;
   let nextContinuationToken: string | undefined = undefined;
 
   while (shouldContinue) {
-    let res: any = await new AWS_SDK.S3({
-      endpoint: "http://localhost:9000",
+    const res: any = await new AWS_SDK.S3({
+      endpoint: config.get('endpoint'),
       s3ForcePathStyle: true,
       signatureVersion: 'v4',
       // region: "fr-par",
       credentials: {
-        accessKeyId: "adminminio",
-        secretAccessKey: "adminminio",
+        accessKeyId: config.get('accessKey'),
+        secretAccessKey: config.get('secretKey'),
       }
     })
       .listObjectsV2({
@@ -43,4 +46,4 @@ async function listAllContents({ Bucket, Prefix }: any): Promise<S3Object[]> {
   }
 
   return list;
-};
+}

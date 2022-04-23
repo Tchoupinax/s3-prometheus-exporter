@@ -1,4 +1,5 @@
 import { Gauge, Registry } from "prom-client";
+import { S3Object } from "../types/S3Object";
 
 import Metric from "./metric"
 

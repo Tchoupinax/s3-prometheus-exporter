@@ -1,0 +1,9 @@
+**
+
+!package*.json
+!tsconfig.json
+
+!src
+!config
+
+config/local.json
