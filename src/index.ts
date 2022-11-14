@@ -41,9 +41,12 @@ async function main() {
     return reply.send(await register.metrics());
   });
 
-  app.listen(config.get('port'), '0.0.0.0', () => {
-    logger.info('Server is started on port %s', config.get('port'))
-  });
+  app.listen(
+    { port: config.get('port'), host: '0.0.0.0' },
+    () => {
+      logger.info('Server is started on port %s', config.get('port'))
+    }
+  )
 }
 
 main();

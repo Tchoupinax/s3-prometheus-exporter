@@ -12,14 +12,13 @@
     "url": "https://github.com/Tchoupinax/s3-exporter/issues"
   },
   "scripts": {
-    "watch": "nodemon --exec vite-node src/index.ts",
-    "lint": "eslint . --ext=.ts",
     "build": "tsc",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "lint": "eslint . --ext=.ts",
     "s3": "docker compose up -d",
     "security": "trivy fs --security-checks vuln,config .",
-    "docker:build": "docker buildx build --platform linux/amd64,linux/arm64 -t tchoupinax/s3-prometheus-exporter . --push && docker buildx build --platform linux/amd64,linux/arm64 -t tchoupinax/s3-prometheus-exporter:v$(cat package.json | jq -r '.version') . --push"
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "watch": "nodemon --exec vite-node src/index.ts"
   },
   "keywords": [],
   "dependencies": {
