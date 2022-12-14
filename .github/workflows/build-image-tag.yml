@@ -25,7 +25,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: tchoupinax/fuzzy-engine
+          images: tchoupinax/s3-prometheus-exporter
           flavor: latest=true
           tags: |
             type=ref,event=branch

@@ -1,6 +1,6 @@
 {
   "name": "s3-prometheus-exporter",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "S3 data exporter for prometheus",
   "author": "Tchoupinax <corentinfiloche@hotmail.fr> (https://corentinfiloche.xyz)",
   "license": "MIT",
