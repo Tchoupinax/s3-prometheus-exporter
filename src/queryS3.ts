@@ -20,20 +20,15 @@ async function listAllContents({ Bucket, Prefix }: any): Promise<S3Object[]> {
   while (shouldContinue) {
     const res: any = await new AWS_SDK.S3({
       endpoint: config.get('endpoint'),
-      s3ForcePathStyle: true,
-      signatureVersion: 'v4',
-      // region: "fr-par",
-      credentials: {
-        accessKeyId: config.get('accessKey'),
-        secretAccessKey: config.get('secretKey'),
-      }
+      accessKeyId: config.get('accessKey'),
+      secretAccessKey: config.get('secretKey'),
     })
       .listObjectsV2({
         Bucket,
         Prefix,
         ContinuationToken: nextContinuationToken ?? undefined,
       })
-      .promise();
+      .promise()
 
     list = [...list, ...res.Contents!];
 
