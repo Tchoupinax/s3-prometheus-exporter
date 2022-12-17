@@ -27,4 +27,4 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: tchoupinax/s3-prometheus-exporter:latest
+          tags: tchoupinax/s3-prometheus-exporter:next
