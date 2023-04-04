@@ -1,42 +1,51 @@
-import * as AWS_SDK from 'aws-sdk'
-import Metric from './metrics/metric';
-import { S3Object } from './types/S3Object';
-import * as config from 'config';
+import { _Object, ListObjectsCommand, ListObjectsCommandInput, S3Client } from "@aws-sdk/client-s3";
+import config from "config";
+
+import Metric from "./metrics/metric";
+
+const s3Client = new S3Client({
+  credentials: {
+    accessKeyId: config.get("accessKey"),
+    secretAccessKey: config.get("secretKey"),
+  },
+  endpoint: config.get("endpoint"),
+});
 
 export default async function (plugins: InstanceType<typeof Metric>[]) {
-  const files = await listAllContents({ Bucket: config.get('bucket') });
+  const files = await listAllContents({ Bucket: config.get("bucket") });
 
   for (let i = 0; i < plugins.length; i++) {
     const prefix = plugins[i].getPrefix();
-    plugins[i].getMesure().set(plugins[i].process(files.filter(file => file.Key.includes(prefix))));
+    plugins[i].getMesure().set(plugins[i].process(
+      files.filter(file => file.Key?.includes(prefix)),
+    ));
   }
 }
 
-async function listAllContents({ Bucket, Prefix }: any): Promise<S3Object[]> {
-  let list: S3Object[] = [];
+async function listAllContents (
+  { Bucket, Prefix }: { Bucket: string, Prefix?: string },
+): Promise<_Object[]> {
+  let list: Array<_Object> = [];
   let shouldContinue = true;
-  let nextContinuationToken: string | undefined = undefined;
+  let cursor : string | undefined;
 
   while (shouldContinue) {
-    const res: any = await new AWS_SDK.S3({
-      endpoint: config.get('endpoint'),
-      accessKeyId: config.get('accessKey'),
-      secretAccessKey: config.get('secretKey'),
-    })
-      .listObjectsV2({
-        Bucket,
-        Prefix,
-        ContinuationToken: nextContinuationToken ?? undefined,
-      })
-      .promise()
+    const params: ListObjectsCommandInput = { Bucket, Prefix };
+    if (cursor) {
+      params.Marker = cursor;
+    }
 
-    list = [...list, ...res.Contents!];
+    const res = await s3Client.send(new ListObjectsCommand(params));
+
+    if (res.Contents) {
+      list = [...list, ...res.Contents];
+    }
 
     if (!res.IsTruncated) {
       shouldContinue = false;
-      nextContinuationToken = undefined;
+      cursor = undefined;
     } else {
-      nextContinuationToken = res.NextContinuationToken;
+      cursor = res.Marker;
     }
   }
 
