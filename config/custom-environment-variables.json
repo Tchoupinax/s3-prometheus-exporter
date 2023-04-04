@@ -1,8 +1,8 @@
 {
-  "port": "PORT",
   "accessKey": "S3_ACCESS_KEY",
-  "secretKey": "S3_SECRET_KEY",
   "bucket": "S3_BUCKET_NAME",
+  "endpoint": "S3_ENDPOINT",
+  "port": "PORT",
   "prefixes": "S3_PREFIXES",
-  "endpoint": "S3_ENDPOINT"
+  "secretKey": "S3_SECRET_KEY"
 }

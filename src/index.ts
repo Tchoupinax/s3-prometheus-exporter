@@ -1,29 +1,30 @@
-import Fastify, { FastifyReply } from 'fastify'
-import { Registry } from 'prom-client'
-import * as fs from 'fs'
-import Metric from './metrics/metric';
-import logger from './utils/logger';
-import queryS3 from './queryS3'
-import * as config from 'config';
+import { readdirSync } from "node:fs";
+import path from "node:path";
 
-// let plugins: InstanceType<typeof Metric>[] = [];
-let plugins: any = []
+import config from "config";
+import Fastify, { FastifyReply } from "fastify";
+import { Registry } from "prom-client";
+
+import Metric from "./metrics/metric";
+import queryS3 from "./queryS3";
+import logger from "./utils/logger";
+
+let plugins: InstanceType<typeof Metric>[] = [];
 const register = new Registry();
-const prefixes = (config.get('prefixes') as string).split(',') ?? ['default']
+const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
 
-const pluginsFileNames = fs.readdirSync(`${__dirname}/metrics`)
-  .filter(name => !name.includes('metric.'));
+const pluginsFileNames = readdirSync(path.join(__dirname, "/metrics"))
+  .filter(name => !name.includes("metric."));
 
-async function main() {
+async function main (): Promise<void> {
   for (let j = 0; j < prefixes.length; j++) {
     plugins = [
       ...plugins,
       ...(await Promise.all(
         pluginsFileNames.map(async filename => {
-          const { default: localClass } = await import(`${process.cwd()}/src/metrics/${filename}`)
-
-          return (new localClass(prefixes[j])) as InstanceType<typeof Metric>
-        })))
+          const { default: LocalClass } = await import(`${process.cwd()}/src/metrics/${filename}`);
+          return (new LocalClass(prefixes[j])) as InstanceType<typeof Metric>;
+        }))),
     ];
 
     for (let i = 0; i < pluginsFileNames.length; i++) {
@@ -32,21 +33,18 @@ async function main() {
   }
 
   const app = Fastify();
-
-  app.get('/metrics', async (_, reply: FastifyReply) => {
-    reply.header('Content-Type', register.contentType)
-
+  app.get("/metrics", async (_, reply: FastifyReply) => {
+    reply.header("Content-Type", register.contentType);
     await queryS3(plugins);
-
     return reply.send(await register.metrics());
   });
 
   app.listen(
-    { port: config.get('port'), host: '0.0.0.0' },
+    { port: config.get("port"), host: "0.0.0.0" },
     () => {
-      logger.info('Server is started on port %s', config.get('port'))
-    }
-  )
+      logger.info("Server is started on port %s", config.get("port"));
+    },
+  );
 }
 
 main();
