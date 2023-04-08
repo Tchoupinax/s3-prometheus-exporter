@@ -14,7 +14,8 @@ const register = new Registry();
 const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
 
 const pluginsFileNames = readdirSync(path.join(__dirname, "/metrics"))
-  .filter(name => !name.includes("metric."));
+  .filter(name => !name.includes("metric."))
+  .filter(name => name.endsWith(".js") || name.endsWith(".ts"));
 
 async function main (): Promise<void> {
   for (let j = 0; j < prefixes.length; j++) {
@@ -22,7 +23,7 @@ async function main (): Promise<void> {
       ...plugins,
       ...(await Promise.all(
         pluginsFileNames.map(async filename => {
-          const { default: LocalClass } = await import(`${process.cwd()}/src/metrics/${filename}`);
+          const { default: LocalClass } = await import(path.join(__dirname, "metrics", filename));
           return (new LocalClass(prefixes[j])) as InstanceType<typeof Metric>;
         }))),
     ];
