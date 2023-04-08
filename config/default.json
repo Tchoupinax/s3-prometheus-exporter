@@ -8,5 +8,6 @@
   },
   "port": 6004,
   "prefixes": "default",
-  "secretKey": "minio"
+  "secretKey": "minio",
+  "region": "fr-par"
 }

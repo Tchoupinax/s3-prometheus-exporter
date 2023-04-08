@@ -9,6 +9,7 @@ const s3Client = new S3Client({
     secretAccessKey: config.get("secretKey"),
   },
   endpoint: config.get("endpoint"),
+  region: config.get("region"),
 });
 
 export default async function (
