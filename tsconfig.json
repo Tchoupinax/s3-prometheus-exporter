@@ -3,7 +3,7 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
-    "declaration": true,
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -20,10 +20,10 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strict": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "target": "ES2022",
+    "target": "ES2022"
   }
 }
