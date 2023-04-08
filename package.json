@@ -1,9 +1,10 @@
 {
   "name": "s3-prometheus-exporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "S3 data exporter for prometheus",
   "author": "Tchoupinax <corentinfiloche@hotmail.fr> (https://corentinfiloche.xyz)",
   "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Tchoupinax/s3-exporter"
@@ -17,11 +18,10 @@
     "s3": "docker compose up -d",
     "security": "trivy fs --security-checks vuln,config .",
     "test": "vitest",
-    "watch": "nodemon --exec vite-node src/index.ts"
+    "watch": "nodemon --exec vite-node --options.deps.inline=\"@aws-sdk\" src/index.ts"
   },
-  "keywords": [],
   "dependencies": {
-    "@aws-sdk/client-s3": "3.306.0",
+    "@aws-sdk/client-s3": "3.309.0",
     "config": "3.3.9",
     "express": "4.18.2",
     "fastify": "4.15.0",
@@ -37,10 +37,10 @@
     "@types/config": "3.3.0",
     "@types/express": "4.17.17",
     "@types/node": "18.15.11",
-    "@typescript-eslint/eslint-plugin": "5.57.0",
-    "@typescript-eslint/parser": "5.57.0",
+    "@typescript-eslint/eslint-plugin": "5.57.1",
+    "@typescript-eslint/parser": "5.57.1",
     "esbuild-plugin-tsc": "0.3.1",
-    "eslint": "8.37.0",
+    "eslint": "8.38.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.27.5",
@@ -51,6 +51,6 @@
     "eslint-plugin-typescript-sort-keys": "2.3.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "nodemon": "2.0.22",
-    "typescript": "5.0.3"
+    "typescript": "4"
   }
 }

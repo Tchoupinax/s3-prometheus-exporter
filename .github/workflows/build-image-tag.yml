@@ -37,5 +37,5 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: v${{ steps.meta.outputs.tags }}
           labels: v${{ steps.meta.outputs.labels }}

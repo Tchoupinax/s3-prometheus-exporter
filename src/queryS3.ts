@@ -9,9 +9,12 @@ const s3Client = new S3Client({
     secretAccessKey: config.get("secretKey"),
   },
   endpoint: config.get("endpoint"),
+  region: config.get("region"),
 });
 
-export default async function (plugins: InstanceType<typeof Metric>[]) {
+export default async function (
+  plugins: InstanceType<typeof Metric>[],
+): Promise<void> {
   const files = await listAllContents({ Bucket: config.get("bucket") });
 
   for (let i = 0; i < plugins.length; i++) {

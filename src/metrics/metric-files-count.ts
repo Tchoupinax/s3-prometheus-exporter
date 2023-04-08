@@ -5,8 +5,7 @@ import Metric from "./metric";
 
 export default class extends Metric {
   constructor (prefix: string) {
-    super("files_count");
-    this.prefix = prefix;
+    super("files_count", prefix);
   }
 
   declarePrometheusMesure (register: Registry): Gauge<any> {

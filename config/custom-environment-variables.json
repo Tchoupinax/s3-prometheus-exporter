@@ -4,5 +4,6 @@
   "endpoint": "S3_ENDPOINT",
   "port": "PORT",
   "prefixes": "S3_PREFIXES",
+  "region": "S3_REGION",
   "secretKey": "S3_SECRET_KEY"
 }
