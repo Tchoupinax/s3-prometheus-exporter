@@ -1,0 +1,11 @@
+# Changelog
+
+## 0.1.2 | 2023-05-17
+
+#### Features
+
+- Pass to Node.js v20
+
+#### Chores
+
+- Upgrade dependencies
