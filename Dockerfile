@@ -1,4 +1,4 @@
-FROM node:19-alpine as builder
+FROM node:20-alpine as builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN yarn build
 
 ###
 
-FROM node:19-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
