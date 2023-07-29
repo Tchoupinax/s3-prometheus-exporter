@@ -20,7 +20,9 @@ export default abstract class Metric {
   }
 
   name (): string {
-    return `s3_${this.metricName}_${this.prefix}`;
+    return `s3_${this.metricName}_${this.prefix}`
+      .replaceAll("-", "_")
+      .toLowerCase();
   }
 
   getPrefix (): string {
