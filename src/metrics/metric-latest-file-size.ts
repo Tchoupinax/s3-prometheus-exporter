@@ -5,25 +5,30 @@ import Metric from "./metric";
 
 export default class extends Metric {
   constructor (prefix: string) {
-    super("smallest_file_timestamp", prefix);
+    super("latest_file_size", prefix);
   }
 
   declarePrometheusMesure (register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
-      help: "Last modified timestamp(milliseconds) for latest file in",
+      help: "Most recent file size",
       labelNames: ["name"],
       registers: [register],
     });
   }
 
   process (files: Array<_Object>): number {
-    return files.reduce((acc: number, cur: _Object) => {
-      if (cur.Size && acc < cur.Size) {
-        return cur.Size ?? 0;
-      } else {
-        return acc;
+    let mostRecentFile: _Object = files[0];
+
+    for (const file of files) {
+      if (
+        file?.LastModified && mostRecentFile?.LastModified &&
+        file?.LastModified > mostRecentFile?.LastModified
+      ) {
+        mostRecentFile = file;
       }
-    }, 0);
+    }
+
+    return mostRecentFile?.Size ?? -1;
   }
 }
