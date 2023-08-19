@@ -11,7 +11,7 @@ export default class extends Metric {
   declarePrometheusMesure (register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
-      help: "Last modified timestamp(milliseconds) for latest file in",
+      help: "Biggest file size",
       labelNames: ["name"],
       registers: [register],
     });

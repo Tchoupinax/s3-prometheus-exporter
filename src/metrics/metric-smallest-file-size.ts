@@ -5,13 +5,13 @@ import Metric from "./metric";
 
 export default class extends Metric {
   constructor (prefix: string) {
-    super("smallest_file_timestamp", prefix);
+    super("smallest_file_size", prefix);
   }
 
   declarePrometheusMesure (register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
-      help: "Last modified timestamp(milliseconds) for latest file in",
+      help: "Smallest file size",
       labelNames: ["name"],
       registers: [register],
     });
