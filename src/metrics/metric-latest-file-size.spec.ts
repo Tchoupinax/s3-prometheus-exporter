@@ -10,6 +10,10 @@ describe("metric latest file size", () => {
     metricLatestFileSize = new MetricLatestFileSize("test");
   });
 
+  it("should return the name of the metric", () => {
+    expect(metricLatestFileSize.name()).toBe("s3_latest_file_size_test");
+  });
+
   it("should return the size of the latest file (sorted by timestamp)", () => {
     const data: Array<_Object> = [
       { Size: 23, LastModified: new Date("December 17, 1992") },
