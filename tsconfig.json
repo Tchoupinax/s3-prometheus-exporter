@@ -25,5 +25,9 @@
     "strictBindCallApply": true,
     "strictNullChecks": true,
     "target": "ES2022"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }
