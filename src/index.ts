@@ -5,38 +5,55 @@ import config from "config";
 import Fastify, { FastifyReply } from "fastify";
 import { Registry } from "prom-client";
 
-import Metric from "./metrics/metric";
+import { Metric } from "./metrics/metric";
 import queryS3 from "./queryS3";
 import logger from "./utils/logger";
 
-let plugins: InstanceType<typeof Metric>[] = [];
+let globalPlugins: InstanceType<typeof Metric>[] = [];
+let prefixedPlugins: InstanceType<typeof Metric>[] = [];
 const register = new Registry();
 const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
 
-const pluginsFileNames = readdirSync(path.join(__dirname, "/metrics"))
+const prefixedPluginsFileNames = readdirSync(path.join(__dirname, "/metrics/prefixed"))
   .filter(name => !name.includes("metric."))
+  .filter(name => !name.includes("spec"))
+  .filter(name => name.endsWith(".js") || name.endsWith(".ts"));
+
+const globalPluginsFileNames = readdirSync(path.join(__dirname, "/metrics/global"))
+  .filter(name => !name.includes("metric."))
+  .filter(name => !name.includes("spec"))
   .filter(name => name.endsWith(".js") || name.endsWith(".ts"));
 
 async function main (): Promise<void> {
   for (let j = 0; j < prefixes.length; j++) {
-    plugins = [
-      ...plugins,
+    prefixedPlugins = [
+      ...prefixedPlugins,
       ...(await Promise.all(
-        pluginsFileNames.map(async filename => {
-          const { default: LocalClass } = await import(path.join(__dirname, "metrics", filename));
+        prefixedPluginsFileNames.map(async filename => {
+          const { default: LocalClass } = await import(path.join(__dirname, "metrics/prefixed", filename));
           return (new LocalClass(prefixes[j])) as InstanceType<typeof Metric>;
         }))),
     ];
 
-    for (let i = 0; i < pluginsFileNames.length; i++) {
-      plugins[i + (j * pluginsFileNames.length)].saveMesure(plugins[i + (j * pluginsFileNames.length)].declarePrometheusMesure(register));
+    for (let i = 0; i < prefixedPluginsFileNames.length; i++) {
+      prefixedPlugins[i + (j * prefixedPluginsFileNames.length)].saveMesure(prefixedPlugins[i + (j * prefixedPluginsFileNames.length)].declarePrometheusMesure(register));
     }
+  }
+
+  globalPlugins = await Promise.all(
+    globalPluginsFileNames.map(async filename => {
+      const { default: LocalClass } = await import(path.join(__dirname, "metrics/global", filename));
+      return (new LocalClass()) as InstanceType<typeof Metric>;
+    }));
+
+  for (let i = 0; i < globalPluginsFileNames.length; i++) {
+    globalPlugins[i].saveMesure(globalPlugins[i].declarePrometheusMesure(register));
   }
 
   const app = Fastify();
   app.get("/metrics", async (_, reply: FastifyReply) => {
     reply.header("Content-Type", register.contentType);
-    await queryS3(plugins);
+    await queryS3(prefixedPlugins, globalPlugins);
     return reply.send(await register.metrics());
   });
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 | 2023-08-25
+
+#### Features
+
+- Add global metrics (you can get the count of all files, whatever their prefix are)
+
+#### Chores
+
+- Improve files architectures (prefixed/global metrics)
+- Upgrade dependencies
+
 ## 0.2.0 | 2023-08-19
 
 #### Features
