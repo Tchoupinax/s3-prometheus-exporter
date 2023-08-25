@@ -1,7 +1,7 @@
 import { Gauge } from "prom-client";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import Metric from "./metric";
+import { Metric } from "./metric";
 
 class TestMetric extends Metric {
   constructor (prefix: string) {

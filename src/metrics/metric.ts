@@ -1,7 +1,7 @@
 import { _Object } from "@aws-sdk/client-s3";
 import { Gauge, Registry } from "prom-client";
 
-export default abstract class Metric {
+export abstract class Metric {
   public metricName: string;
   private mesure?: Gauge<"mesure"> = undefined;
   protected prefix: string;
