@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0 | 2023-12-26
+
+#### Features
+
+- Add metric to calculate the size of a bucket
+
+#### Chores
+
+- Upgrade dependencies
+
 ## 0.3.0 | 2023-08-25
 
 #### Features
