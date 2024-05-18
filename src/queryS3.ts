@@ -2,6 +2,7 @@ import { _Object, ListObjectsCommand, ListObjectsCommandInput, S3Client } from "
 import config from "config";
 
 import { Metric } from "./metrics/metric";
+import logger from "./utils/logger";
 
 const s3Client = new S3Client({
   credentials: {
@@ -40,7 +41,12 @@ async function listAllContents (
   let cursor : string | undefined;
 
   while (shouldContinue) {
-    const params: ListObjectsCommandInput = { Bucket, Prefix };
+    logger.debug("Processing %s objects", list.length);
+
+    const params: ListObjectsCommandInput = {
+      Bucket,
+      Prefix,
+    };
     if (cursor) {
       params.Marker = cursor;
     }
@@ -55,7 +61,7 @@ async function listAllContents (
       shouldContinue = false;
       cursor = undefined;
     } else {
-      cursor = res.Marker;
+      cursor = list.at(-1)?.Key;
     }
   }
 
