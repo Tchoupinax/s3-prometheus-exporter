@@ -1,4 +1,9 @@
-import { _Object, ListObjectsCommand, ListObjectsCommandInput, S3Client } from "@aws-sdk/client-s3";
+import {
+  _Object,
+  ListObjectsCommand,
+  ListObjectsCommandInput,
+  S3Client,
+} from "@aws-sdk/client-s3";
 import config from "config";
 
 import { Metric } from "./metrics/metric";
@@ -21,24 +26,30 @@ export default async function (
 
   for (let i = 0; i < prefixedPlugins.length; i++) {
     const prefix = prefixedPlugins[i].getPrefix();
-    prefixedPlugins[i].getMesure().set(prefixedPlugins[i].process(
-      files.filter(file => file.Key?.includes(prefix)),
-    ));
+    prefixedPlugins[i]
+      .getMesure()
+      .set(
+        prefixedPlugins[i].process(
+          files.filter((file) => file.Key?.includes(prefix)),
+        ),
+      );
   }
 
   for (let i = 0; i < globalPlugins.length; i++) {
-    globalPlugins[i].getMesure().set(globalPlugins[i].process(
-      files,
-    ));
+    globalPlugins[i].getMesure().set(globalPlugins[i].process(files));
   }
 }
 
-async function listAllContents (
-  { Bucket, Prefix }: { Bucket: string, Prefix?: string },
-): Promise<_Object[]> {
+async function listAllContents({
+  Bucket,
+  Prefix,
+}: {
+  Bucket: string;
+  Prefix?: string;
+}): Promise<_Object[]> {
   let list: Array<_Object> = [];
   let shouldContinue = true;
-  let cursor : string | undefined;
+  let cursor: string | undefined;
 
   while (shouldContinue) {
     logger.debug("Processing %s objects", list.length);

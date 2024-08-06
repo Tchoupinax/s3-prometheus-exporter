@@ -4,11 +4,11 @@ import { Gauge, Registry } from "prom-client";
 import { Metric } from "./../metric";
 
 export default class extends Metric {
-  constructor () {
+  constructor() {
     super("files_count", "global");
   }
 
-  declarePrometheusMesure (register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
       help: "Count of files in the bucket",
@@ -17,7 +17,7 @@ export default class extends Metric {
     });
   }
 
-  process (files: _Object[]): number {
+  process(files: _Object[]): number {
     return files.length;
   }
 }

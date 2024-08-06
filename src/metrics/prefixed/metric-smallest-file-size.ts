@@ -4,11 +4,11 @@ import { Gauge, Registry } from "prom-client";
 import { Metric } from "../metric";
 
 export default class extends Metric {
-  constructor (prefix: string) {
+  constructor(prefix: string) {
     super("smallest_file_size", prefix);
   }
 
-  declarePrometheusMesure (register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
       help: "Smallest file size",
@@ -17,7 +17,7 @@ export default class extends Metric {
     });
   }
 
-  process (files: Array<_Object>): number {
+  process(files: Array<_Object>): number {
     return files.reduce((acc: number, cur: _Object) => {
       if (cur.Size && acc < cur.Size) {
         return cur.Size ?? 0;

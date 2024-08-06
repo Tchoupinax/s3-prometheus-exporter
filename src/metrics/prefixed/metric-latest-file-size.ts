@@ -4,11 +4,11 @@ import { Gauge, Registry } from "prom-client";
 import { Metric } from "../metric";
 
 export default class extends Metric {
-  constructor (prefix: string) {
+  constructor(prefix: string) {
     super("latest_file_size", prefix);
   }
 
-  declarePrometheusMesure (register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<any> {
     return new Gauge({
       name: this.name(),
       help: "Most recent file size",
@@ -17,12 +17,13 @@ export default class extends Metric {
     });
   }
 
-  process (files: Array<_Object>): number {
+  process(files: Array<_Object>): number {
     let mostRecentFile: _Object = files[0];
 
     for (const file of files) {
       if (
-        file?.LastModified && mostRecentFile?.LastModified &&
+        file?.LastModified &&
+        mostRecentFile?.LastModified &&
         file?.LastModified > mostRecentFile?.LastModified
       ) {
         mostRecentFile = file;

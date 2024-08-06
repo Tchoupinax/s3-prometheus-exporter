@@ -4,15 +4,15 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { Metric } from "./metric";
 
 class TestMetric extends Metric {
-  constructor (prefix: string) {
+  constructor(prefix: string) {
     super("smallest_file_timestamp", prefix);
   }
 
-  declarePrometheusMesure (): Gauge<any> {
+  declarePrometheusMesure(): Gauge<any> {
     throw new Error("Method not implemented.");
   }
 
-  process (): number {
+  process(): number {
     throw new Error("Method not implemented.");
   }
 }
