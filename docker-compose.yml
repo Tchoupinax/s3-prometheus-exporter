@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   minio:
     image: quay.io/minio/minio:RELEASE.2022-04-12T06-55-35Z

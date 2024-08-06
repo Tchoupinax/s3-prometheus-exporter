@@ -6,30 +6,30 @@ export abstract class Metric {
   private mesure?: Gauge<"mesure"> = undefined;
   protected prefix: string;
 
-  constructor (name: string, prefix: string) {
+  constructor(name: string, prefix: string) {
     this.metricName = name;
     this.prefix = prefix;
   }
 
-  saveMesure (mesure: Gauge<"mesure">): void {
+  saveMesure(mesure: Gauge<"mesure">): void {
     this.mesure = mesure;
   }
 
-  getMesure (): Gauge<"mesure"> {
+  getMesure(): Gauge<"mesure"> {
     return this.mesure!;
   }
 
-  name (): string {
+  name(): string {
     return `s3_${this.metricName}_${this.prefix}`
       .replaceAll("-", "_")
       .replaceAll("/", "_")
       .toLowerCase();
   }
 
-  getPrefix (): string {
+  getPrefix(): string {
     return this.prefix;
   }
 
-  abstract declarePrometheusMesure(register: Registry): Gauge<"mesure">
+  abstract declarePrometheusMesure(register: Registry): Gauge<"mesure">;
   abstract process(files: _Object[]): number;
 }

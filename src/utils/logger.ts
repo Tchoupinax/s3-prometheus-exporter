@@ -17,12 +17,10 @@ if (config.get("logger.pretty")) {
     }),
   );
 } else {
-  logger = pino(
-    {
-      level: config.get("logger.level"),
-      base: null,
-    },
-  );
+  logger = pino({
+    level: config.get("logger.level"),
+    base: null,
+  });
 }
 
 export default logger;
