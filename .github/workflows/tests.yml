@@ -2,8 +2,7 @@ name: Unit tests
 
 on:
   push:
-    branches:
-      - feature/**
+    branches: ["*"]
 
 jobs:
   test:
