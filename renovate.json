@@ -4,6 +4,7 @@
     "config:recommended",
     "group:allNonMajor"
   ],
+  "labels": ["renovate"],
   "packageRules": [
     {
       "matchUpdateTypes": [
