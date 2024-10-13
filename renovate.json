@@ -4,6 +4,10 @@
     "config:recommended",
     "group:allNonMajor"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  },
   "labels": ["renovate"],
   "packageRules": [
     {
