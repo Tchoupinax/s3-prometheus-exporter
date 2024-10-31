@@ -1443,10 +1443,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@22.8.5":
-  version "22.8.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.8.5.tgz#a978fb6755dbb32889b0bc3e37554dbc04f261a6"
-  integrity sha512-5iYk6AMPtsMbkZqCO1UGF9W5L38twq11S2pYWkybGHH2ogPUvXWNlQqJBzuEZWKj/WRH+QTeiv6ySWqJtvIEgA==
+"@types/node@22.8.6":
+  version "22.8.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.8.6.tgz#e8a0c0871623283d8b3ef7d7b9b1bfdfd3028e22"
+  integrity sha512-tosuJYKrIqjQIlVCM4PEGxOmyg3FCPa/fViuJChnGeEIhjA46oy8FMVoF9su1/v8PNs2a8Q0iFNyOx0uOF91nw==
   dependencies:
     undici-types "~6.19.8"
 
@@ -2604,10 +2604,10 @@ fast-xml-parser@4.4.1:
   dependencies:
     strnum "^1.0.5"
 
-fastify@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/fastify/-/fastify-5.0.0.tgz#f8f80bd741bde2de1997c25dbe31e61c91978111"
-  integrity sha512-Qe4dU+zGOzg7vXjw4EvcuyIbNnMwTmcuOhlOrOJsgwzvjEZmsM/IeHulgJk+r46STjdJS/ZJbxO8N70ODXDMEQ==
+fastify@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-5.1.0.tgz#07029613aa4d94c4e8df71b25696eb67ed5d7079"
+  integrity sha512-0SdUC5AoiSgMSc2Vxwv3WyKzyGMDJRAW/PgNsK1kZrnkO6MeqUIW9ovVg9F2UGIqtIcclYMyeJa4rK6OZc7Jxg==
   dependencies:
     "@fastify/ajv-compiler" "^4.0.0"
     "@fastify/error" "^4.0.0"
