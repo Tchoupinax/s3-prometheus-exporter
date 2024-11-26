@@ -70,10 +70,10 @@
     "@smithy/util-utf8" "^2.0.0"
     tslib "^2.6.2"
 
-"@aws-sdk/client-s3@3.699.0":
-  version "3.699.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.699.0.tgz#cb4705965af88aeac7f2c53dcb183f1042ececf6"
-  integrity sha512-x3wV9e6d0esA6Yyg3xWJucMYd/O8JVrNCJnGm/sz3lMYOQGefpVZKZZsHcnzQcTEVAQMF/T5/cdfdvPzIx/esA==
+"@aws-sdk/client-s3@3.700.0":
+  version "3.700.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.700.0.tgz#e185f1a53c365c01b03a86ced6058f29eb4bfece"
+  integrity sha512-TZTc8OZ873VodJNcsQ4Y/60f0Y0Ws5Z3Xm5QBgPCvhqQS7/+V28pXM3fAomJsKDWTxzH0nP9csX5cPvLybgdZQ==
   dependencies:
     "@aws-crypto/sha1-browser" "5.2.0"
     "@aws-crypto/sha256-browser" "5.2.0"
@@ -1434,10 +1434,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/node@22.9.3":
-  version "22.9.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.3.tgz#08f3d64b3bc6d74b162d36f60213e8a6704ef2b4"
-  integrity sha512-F3u1fs/fce3FFk+DAxbxc78DF8x0cY09RRL8GnXLmkJ1jvx3TtPdWoTT5/NiYfI5ASqXBmfqJi9dZ3gxMx4lzw==
+"@types/node@22.9.4":
+  version "22.9.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.4.tgz#31eefcdbe163a51f53cbfbb3e121b8ae9b16fdb2"
+  integrity sha512-d9RWfoR7JC/87vj7n+PVTzGg9hDyuFjir3RxUHbjFSKNd9mpxbxwMEyaCim/ddCmy4IuW7HjTzF3g9p3EtWEOg==
   dependencies:
     undici-types "~6.19.8"
 
