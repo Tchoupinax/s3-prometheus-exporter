@@ -25,7 +25,7 @@
     "watch": "nodemon --exec vite-node --options.deps.inline=\"@aws-sdk\" src/index.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.713.0",
+    "@aws-sdk/client-s3": "3.714.0",
     "config": "3.3.12",
     "fastify": "5.2.0",
     "moment": "2.30.1",
