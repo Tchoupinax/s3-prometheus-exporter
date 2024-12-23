@@ -1528,7 +1528,7 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-7.12.0.tgz#bf208f971a8da1e7524a5d9ae2b5f15192a37981"
   integrity sha512-o+0Te6eWp2ppKY3mLCU+YA9pVJxhUJE15FV7kxuD9jgwIAa+w/ycGJBMrYDTpVGUM/tgpa9SeMOugSabWFq7bg==
 
-"@typescript-eslint/types@8.18.1", "@typescript-eslint/types@^8.9.0":
+"@typescript-eslint/types@8.18.1", "@typescript-eslint/types@^8.18.1":
   version "8.18.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-8.18.1.tgz#d7f4f94d0bba9ebd088de840266fcd45408a8fff"
   integrity sha512-7uoAUsCj66qdNQNpH2G8MyTFlgerum8ubf21s3TSM3XmKXuIn+H2Sifh/ES2nPOPiYSRJWAk0fDkW0APBWcpfw==
@@ -1598,7 +1598,7 @@
     "@typescript-eslint/types" "7.12.0"
     "@typescript-eslint/typescript-estree" "7.12.0"
 
-"@typescript-eslint/utils@^8.9.0":
+"@typescript-eslint/utils@^8.18.1":
   version "8.18.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-8.18.1.tgz#c4199ea23fc823c736e2c96fd07b1f7235fa92d5"
   integrity sha512-8vikiIj2ebrC4WRdcAdDcmnu9Q/MXXwg+STf40BVfT8exDqBCUPdypvzcUPxEqRGKg9ALagZ0UWcYCtn+4W2iQ==
@@ -2377,15 +2377,14 @@ eslint-plugin-n@17.8.0:
     minimatch "^9.0.0"
     semver "^7.5.3"
 
-eslint-plugin-perfectionist@3.9.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-perfectionist/-/eslint-plugin-perfectionist-3.9.1.tgz#19e4088e161f299a458bcd22be98bc9d1fb55099"
-  integrity sha512-9WRzf6XaAxF4Oi5t/3TqKP5zUjERhasHmLFHin2Yw6ZAp/EP/EVA2dr3BhQrrHWCm5SzTMZf0FcjDnBkO2xFkA==
+eslint-plugin-perfectionist@4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-perfectionist/-/eslint-plugin-perfectionist-4.4.0.tgz#810c93b0ee58f782cfe8d6c586fc3581431b462a"
+  integrity sha512-B78pWxCsA2sClourpWEmWziCcjEsAEyxsNV5G6cxxteu/NI0/2en9XZUONf5e/+O+dgoLZsEPHQEhnIxJcnUvA==
   dependencies:
-    "@typescript-eslint/types" "^8.9.0"
-    "@typescript-eslint/utils" "^8.9.0"
-    minimatch "^9.0.5"
-    natural-compare-lite "^1.4.0"
+    "@typescript-eslint/types" "^8.18.1"
+    "@typescript-eslint/utils" "^8.18.1"
+    natural-orderby "^5.0.0"
 
 eslint-plugin-promise@6.2.0:
   version "6.2.0"
@@ -3245,7 +3244,7 @@ minimatch@^3.0.5, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^9.0.0, minimatch@^9.0.4, minimatch@^9.0.5:
+minimatch@^9.0.0, minimatch@^9.0.4:
   version "9.0.5"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.5.tgz#d74f9dd6b57d83d8e98cfb82133b03978bc929e5"
   integrity sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==
@@ -3281,6 +3280,11 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
+
+natural-orderby@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/natural-orderby/-/natural-orderby-5.0.0.tgz#bb655f669ee9c84e82cdc6cddbba25eb263cd9f4"
+  integrity sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg==
 
 nodemon@3.1.9:
   version "3.1.9"
