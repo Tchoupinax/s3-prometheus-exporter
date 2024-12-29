@@ -1,4 +1,5 @@
 import { _Object } from "@aws-sdk/client-s3";
+
 import { beforeEach, describe, expect, it } from "vitest";
 
 import MetricLatestFileSize from "./metric-latest-file-size";
