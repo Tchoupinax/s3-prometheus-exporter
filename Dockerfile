@@ -1,4 +1,4 @@
-FROM node:22-alpine as builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ RUN mkdir src
 
 COPY --chown=node:node --from=builder /app/dist src/
 
-COPY --chown=node:node  config
+COPY --chown=node:node  config .
 
 USER node
 
