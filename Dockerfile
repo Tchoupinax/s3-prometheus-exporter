@@ -16,14 +16,16 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package.json yarn.lock .
+COPY --chown=node:node package.json yarn.lock .
 
 RUN yarn install --production
 
 RUN mkdir src
 
-COPY --from=builder /app/dist src/
+COPY --chown=node:node --from=builder /app/dist src/
 
-COPY config config
+COPY --chown=node:node  config
+
+USER node
 
 CMD node src/index.js
