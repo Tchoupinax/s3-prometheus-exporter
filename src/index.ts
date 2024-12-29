@@ -7,7 +7,7 @@ import { Registry } from "prom-client";
 
 import { Metric } from "./metrics/metric";
 import queryS3 from "./queryS3";
-import logger from "./utils/logger";
+import { logger } from "./utils/logger";
 
 let globalPlugins: InstanceType<typeof Metric>[] = [];
 let prefixedPlugins: InstanceType<typeof Metric>[] = [];
