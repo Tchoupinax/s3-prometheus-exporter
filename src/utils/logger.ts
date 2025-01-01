@@ -1,26 +1,20 @@
 import config from "config";
-import pino from "pino";
-import pretty from "pino-pretty";
+import pino, { LoggerOptions } from "pino";
 
-let logger: pino.Logger;
+const options: LoggerOptions = {
+  level: config.get("logger.level"),
+  base: null,
+};
 
-if (config.get("logger.pretty")) {
-  logger = pino(
-    {
-      level: config.get("logger.level"),
-      base: null,
-    },
-    pretty({
+if (process.env.NODE_ENV !== "production") {
+  options.transport = {
+    target: "pino-pretty",
+    options: {
       colorize: true,
       levelFirst: true,
       translateTime: "HH:MM:ss.l",
-    }),
-  );
-} else {
-  logger = pino({
-    level: config.get("logger.level"),
-    base: null,
-  });
+    },
+  };
 }
 
-export default logger;
+export const logger = pino(options);
