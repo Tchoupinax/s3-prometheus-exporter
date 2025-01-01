@@ -2,12 +2,12 @@
   "accessKey": "minio",
   "bucket": "minio",
   "endpoint": "https://s3.fr-par.scw.cloud",
-  "port": 6004,
-  "prefixes": "default",
-  "region": "fr-par",
-  "secretKey": "minio",
   "logger": {
     "level": "debug",
     "pretty": true
-  }
+  },
+  "port": 6004,
+  "prefixes": "default",
+  "region": "fr-par",
+  "secretKey": "minio"
 }
