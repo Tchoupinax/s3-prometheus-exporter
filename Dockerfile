@@ -24,7 +24,7 @@ RUN mkdir src
 
 COPY --chown=node:node --from=builder /app/dist src/
 
-COPY --chown=node:node  config .
+COPY --chown=node:node  config config
 
 USER node
 
