@@ -8,7 +8,7 @@ import {
 import config from "config";
 
 import { Metric } from "./metrics/metric";
-import logger from "./utils/logger";
+import { logger } from "./utils/logger";
 
 const s3Client = new S3Client({
   credentials: {
