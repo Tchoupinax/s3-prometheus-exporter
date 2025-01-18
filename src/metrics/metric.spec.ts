@@ -25,6 +25,6 @@ describe("metric", () => {
   });
 
   it("should process the name correctly", () => {
-    expect(metric.name()).toBe("s3_smallest_file_timestamp_test_01");
+    expect(metric.name()).toBe("s3_smallest_file_timestamp");
   });
 });

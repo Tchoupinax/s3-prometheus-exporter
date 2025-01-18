@@ -10,6 +10,8 @@ import config from "config";
 import { Metric } from "./metrics/metric";
 import { logger } from "./utils/logger";
 
+const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
+
 const s3Client = new S3Client({
   credentials: {
     accessKeyId: config.get("accessKey"),
@@ -20,20 +22,22 @@ const s3Client = new S3Client({
 });
 
 export default async function (
-  prefixedPlugins: InstanceType<typeof Metric>[],
+  labelledPlugins: InstanceType<typeof Metric>[],
   globalPlugins: InstanceType<typeof Metric>[],
 ): Promise<void> {
   const files = await listAllContents({ Bucket: config.get("bucket") });
 
-  for (let i = 0; i < prefixedPlugins.length; i++) {
-    const prefix = prefixedPlugins[i].getPrefix();
-    prefixedPlugins[i]
-      .getMesure()
-      .set(
-        prefixedPlugins[i].process(
-          files.filter((file) => file.Key?.includes(prefix)),
-        ),
-      );
+  for (let i = 0; i < labelledPlugins.length; i++) {
+    for (const prefix of prefixes) {
+      labelledPlugins[i]
+        .getMesure()
+        .labels(prefix)
+        .set(
+          labelledPlugins[i].process(
+            files.filter((file) => file.Key?.includes(prefix)),
+          ),
+        );
+    }
   }
 
   for (let i = 0; i < globalPlugins.length; i++) {

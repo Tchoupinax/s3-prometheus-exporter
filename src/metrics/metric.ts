@@ -21,10 +21,8 @@ export abstract class Metric {
   }
 
   name(): string {
-    return `s3_${this.metricName}_${this.prefix}`
-      .replaceAll("-", "_")
-      .replaceAll("/", "_")
-      .toLowerCase();
+    const name = `s3_${this.metricName}`;
+    return name.replaceAll("-", "_").replaceAll("/", "_").toLowerCase();
   }
 
   getPrefix(): string {

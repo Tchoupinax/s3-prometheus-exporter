@@ -6,7 +6,7 @@ import { Metric } from "../metric";
 
 export default class extends Metric {
   constructor() {
-    super("bucket_size", "global");
+    super("global_bucket_size", "global");
   }
 
   declarePrometheusMesure(register: Registry): Gauge<any> {
