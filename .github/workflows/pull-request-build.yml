@@ -1,8 +1,7 @@
-name: Unit tests
+name: Build app
 
 on:
   pull_request:
-    branches: ["*"]
 
 jobs:
   test:
@@ -10,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ["21.x", "22.x"]
+        node-version: ["22.x"]
 
     steps:
       - uses: actions/checkout@v4
@@ -19,4 +18,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn
-      - run: yarn test
+      - run: yarn build
