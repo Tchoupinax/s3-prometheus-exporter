@@ -12,7 +12,7 @@ describe("metric latest file size", () => {
   });
 
   it("should return the name of the metric", () => {
-    expect(metricLatestFileSize.name()).toBe("s3_latest_file_size_test");
+    expect(metricLatestFileSize.name()).toBe("s3_latest_file_size");
   });
 
   it("should return the size of the latest file (sorted by timestamp)", () => {
