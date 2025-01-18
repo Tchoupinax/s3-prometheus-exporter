@@ -8,6 +8,7 @@ import {
 import config from "config";
 
 import { Metric } from "./metrics/metric";
+import { isValidRegex } from "./utils/is-valid-regex";
 import { logger } from "./utils/logger";
 
 const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
@@ -29,14 +30,39 @@ export default async function (
 
   for (let i = 0; i < labelledPlugins.length; i++) {
     for (const prefix of prefixes) {
-      labelledPlugins[i]
-        .getMesure()
-        .labels(prefix)
-        .set(
-          labelledPlugins[i].process(
-            files.filter((file) => file.Key?.includes(prefix)),
+      if (isValidRegex(prefix)) {
+        const backupNamesByRegex = Array.from(
+          new Set(
+            files
+              .map((f) => f.Key)
+              .map((key) => key?.match(prefix))
+              .filter((e) => e)
+              .map((e) => e?.[1]),
           ),
         );
+
+        for (const name of backupNamesByRegex) {
+          if (name) {
+            labelledPlugins[i]
+              .getMesure()
+              .labels(name)
+              .set(
+                labelledPlugins[i].process(
+                  files.filter((file) => file.Key?.match(name)),
+                ),
+              );
+          }
+        }
+      } else {
+        labelledPlugins[i]
+          .getMesure()
+          .labels(prefix)
+          .set(
+            labelledPlugins[i].process(
+              files.filter((file) => file.Key?.includes(prefix)),
+            ),
+          );
+      }
     }
   }
 
