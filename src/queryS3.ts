@@ -83,8 +83,6 @@ async function listAllContents({
   let cursor: string | undefined;
 
   while (shouldContinue) {
-    logger.debug("Processing %s objects", list.length);
-
     const params: ListObjectsCommandInput = {
       Bucket,
       Prefix,
@@ -106,6 +104,8 @@ async function listAllContents({
       cursor = list.at(-1)?.Key;
     }
   }
+
+  logger.debug("Processing %s objects", list.length);
 
   return list;
 }

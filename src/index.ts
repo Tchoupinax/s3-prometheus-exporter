@@ -64,8 +64,10 @@ async function main(): Promise<void> {
   const app = Fastify();
   app.get("/metrics", async (_, reply: FastifyReply) => {
     logger.info("Request received");
-    reply.header("Content-Type", register.contentType);
+
     await queryS3(labelledPlugins, globalPlugins);
+
+    reply.header("Content-Type", register.contentType);
     return reply.send(await register.metrics());
   });
 
