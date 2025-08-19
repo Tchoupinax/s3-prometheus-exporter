@@ -3,7 +3,7 @@ name: Release draft
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   release-draft:
@@ -14,12 +14,12 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/create-github-app-token@v2
-      id: app-token
-      with:
-        app-id: ${{ secrets.DEPLOY_APP_ID }}
-        private-key: ${{ secrets.DEPLOY_APP_KEY }}
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.DEPLOY_APP_ID }}
+          private-key: ${{ secrets.DEPLOY_APP_KEY }}
 
-    - uses: release-drafter/release-drafter@v6
-      env:
-        GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      - uses: release-drafter/release-drafter@v6
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

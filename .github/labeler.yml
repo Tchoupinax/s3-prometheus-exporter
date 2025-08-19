@@ -1,61 +1,67 @@
 version: v1
 labels:
-- label: "semver:major"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    title: ".*BREAKING.*"
+  - label: "semver:major"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      title: ".*BREAKING.*"
 
-- label: "semver:minor"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    title: "^feat(?!.*BREAKING).*"
-    files:
-      any: [ "internal/**", "graphql/**", "cmd/**", "ui/server/**", "ui/components/**" ]
-      count:
-        gte: 1
-        lte: 1000
+  - label: "semver:minor"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      title: "^feat(?!.*BREAKING).*"
+      files:
+        any:
+          [
+            "internal/**",
+            "graphql/**",
+            "cmd/**",
+            "ui/server/**",
+            "ui/components/**",
+          ]
+        count:
+          gte: 1
+          lte: 1000
 
-- label: "semver:patch"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    title: "^fix(?!.*BREAKING).*"
+  - label: "semver:patch"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      title: "^fix(?!.*BREAKING).*"
 
-- label: "maintenance"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    title: "^chore(?!.*BREAKING).*"
-    files:
-      any:
-      - "package.json"
+  - label: "maintenance"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      title: "^chore(?!.*BREAKING).*"
+      files:
+        any:
+          - "package.json"
 
-- label: "CI/CD"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    files:
-      any:
-      - ".github/**"
+  - label: "CI/CD"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      files:
+        any:
+          - ".github/**"
 
-- label: "docs"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    files:
-      any:
-      - "**/*.md"
+  - label: "docs"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      files:
+        any:
+          - "**/*.md"
 
-- label: "helm-chart"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    files:
-      any:
-      - "charts/**"
+  - label: "helm-chart"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      files:
+        any:
+          - "charts/**"
 
-- label: "UI"
-  sync: true # remove label if match failed, default: false
-  matcher:
-    files:
-      any:
-      - "ui/**"
-
+  - label: "UI"
+    sync: true # remove label if match failed, default: false
+    matcher:
+      files:
+        any:
+          - "ui/**"
 #checks:
 #  - context: "Ready to merge"
 #    description: "Disable merging when 'draft' label is set."
