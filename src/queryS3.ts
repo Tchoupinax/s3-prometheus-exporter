@@ -105,7 +105,7 @@ async function listAllContents({
     }
   }
 
-  logger.debug("Processing %s objects", list.length);
+  logger.debug(`Processing ${list.length} objects`);
 
   return list;
 }
