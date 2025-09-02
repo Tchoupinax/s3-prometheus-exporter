@@ -39,8 +39,8 @@
   "devDependencies": {
     "@types/config": "3.3.5",
     "@types/node": "24.3.0",
-    "@typescript-eslint/eslint-plugin": "8.41.0",
-    "@typescript-eslint/parser": "8.41.0",
+    "@typescript-eslint/eslint-plugin": "8.42.0",
+    "@typescript-eslint/parser": "8.42.0",
     "esbuild-plugin-tsc": "0.5.0",
     "eslint": "9",
     "eslint-config-standard": "17.1.0",
@@ -55,6 +55,6 @@
     "nodemon": "3.1.10",
     "prettier": "3.6.2",
     "typescript": "5.9.2",
-    "typescript-eslint": "8.41.0"
+    "typescript-eslint": "8.42.0"
   }
 }
