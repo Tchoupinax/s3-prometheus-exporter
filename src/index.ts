@@ -63,12 +63,20 @@ async function main(): Promise<void> {
 
   const app = Fastify();
   app.get("/metrics", async (_, reply: FastifyReply) => {
-    logger.info("Request received");
+    logger.debug("Request received");
 
-    await queryS3(labelledPlugins, globalPlugins);
+    try {
+      await queryS3(labelledPlugins, globalPlugins);
 
-    reply.header("Content-Type", register.contentType);
-    return reply.send(await register.metrics());
+      reply.header("Content-Type", register.contentType);
+
+      return reply.send(await register.metrics());
+    } catch (err) {
+      logger.error(err);
+      return reply
+        .status(500)
+        .send("Internal error, please give a look to logs.\n");
+    }
   });
 
   app.listen({ port: config.get("port"), host: "0.0.0.0" }, () => {
