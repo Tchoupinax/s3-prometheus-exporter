@@ -1,6 +1,6 @@
 {
   "name": "s3-prometheus-exporter",
-  "version": "0.5.3",
+  "version": "1.1.0",
   "description": "S3 data exporter for prometheus",
   "author": "Tchoupinax <corentinfiloche@hotmail.fr> (https://corentinfiloche.xyz)",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "watch": "nodemon --exec vite-node --options.deps.inline=\"@aws-sdk\" src/index.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.883.0",
+    "@aws-sdk/client-s3": "3.884.0",
     "config": "4.1.1",
     "fastify": "5.6.0",
     "moment": "2.30.1",
