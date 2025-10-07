@@ -2,6 +2,7 @@
   "accessKey": "S3_ACCESS_KEY",
   "bucket": "S3_BUCKET_NAME",
   "endpoint": "S3_ENDPOINT",
+  "forcePathStyle": "S3_FORCE_PATH_STYLE",
   "port": "PORT",
   "prefixes": "S3_PREFIXES",
   "region": "S3_REGION",
