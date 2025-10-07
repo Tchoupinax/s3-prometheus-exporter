@@ -20,6 +20,7 @@ const s3Client = new S3Client({
   },
   endpoint: config.get("endpoint"),
   region: config.get("region"),
+  forcePathStyle: config.get("region") ?? false,
 });
 
 export default async function (

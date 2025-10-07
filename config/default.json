@@ -2,6 +2,7 @@
   "accessKey": "minio",
   "bucket": "minio",
   "endpoint": "https://s3.fr-par.scw.cloud",
+  "forcePathStyle": false,
   "logger": {
     "level": "debug",
     "pretty": true
