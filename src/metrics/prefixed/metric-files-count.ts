@@ -9,7 +9,7 @@ export default class extends Metric {
     super("files_count", prefix);
   }
 
-  declarePrometheusMesure(register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<string> {
     return new Gauge({
       name: this.name(),
       help: "Count of files in the bucket",

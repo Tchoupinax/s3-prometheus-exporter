@@ -32,9 +32,12 @@ async function main(): Promise<void> {
     ...labelledPlugins,
     ...(await Promise.all(
       prefixedPluginsFileNames.map(async (filename) => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { default: LocalClass } = await import(
           path.join(__dirname, "metrics/prefixed", filename)
         );
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         return new LocalClass() as InstanceType<typeof Metric>;
       }),
     )),
@@ -48,9 +51,12 @@ async function main(): Promise<void> {
 
   globalPlugins = await Promise.all(
     globalPluginsFileNames.map(async (filename) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { default: LocalClass } = await import(
         path.join(__dirname, "metrics/global", filename)
       );
+
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       return new LocalClass() as InstanceType<typeof Metric>;
     }),
   );
@@ -84,4 +90,4 @@ async function main(): Promise<void> {
   });
 }
 
-main();
+void main();

@@ -1,8 +1,8 @@
-FROM node:24-alpine AS builder
+FROM node:25-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock .
+COPY package.json yarn.lock /app/
 
 RUN yarn
 
@@ -12,11 +12,11 @@ RUN yarn build
 
 ###
 
-FROM node:24-alpine
+FROM node:25-alpine
 
 WORKDIR /app
 
-COPY --chown=node:node package.json yarn.lock .
+COPY --chown=node:node package.json yarn.lock /app/
 
 RUN yarn install --production
 
