@@ -8,7 +8,7 @@ class TestMetric extends Metric {
     super("smallest_file_timestamp", prefix);
   }
 
-  declarePrometheusMesure(): Gauge<any> {
+  declarePrometheusMesure(): Gauge<string> {
     throw new Error("Method not implemented.");
   }
 

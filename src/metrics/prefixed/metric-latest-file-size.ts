@@ -9,7 +9,7 @@ export default class extends Metric {
     super("latest_file_size", prefix);
   }
 
-  declarePrometheusMesure(register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<string> {
     return new Gauge({
       name: this.name(),
       help: "Most recent file size",

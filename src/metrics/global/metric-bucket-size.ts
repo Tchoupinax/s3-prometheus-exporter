@@ -9,7 +9,7 @@ export default class extends Metric {
     super("global_bucket_size", "global");
   }
 
-  declarePrometheusMesure(register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<string> {
     return new Gauge({
       name: this.name(),
       help: "Size of the bucket (in Bytes)",

@@ -11,7 +11,11 @@ import { Metric } from "./metrics/metric";
 import { isValidRegex } from "./utils/is-valid-regex";
 import { logger } from "./utils/logger";
 
-const prefixes = (config.get("prefixes") as string).split(",") ?? ["default"];
+// @ts-expect-error legacy
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+const prefixes: Array<string> = config.get("prefixes").split(",") ?? [
+  "default",
+];
 
 const s3Client = new S3Client({
   credentials: {

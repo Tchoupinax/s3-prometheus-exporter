@@ -9,7 +9,7 @@ export default class extends Metric {
     super("oldest_file_timestamp", prefix);
   }
 
-  declarePrometheusMesure(register: Registry): Gauge<any> {
+  declarePrometheusMesure(register: Registry): Gauge<string> {
     return new Gauge({
       name: this.name(),
       help: "Last modified timestamp(milliseconds) for oldest file in",
