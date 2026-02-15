@@ -1,21 +1,18 @@
-name: Unit tests
+name: Pull request checks 🔎
 
 on:
   pull_request:
 
 jobs:
-  test:
+  unit-tests:
+    name: Unit tests 🐏
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: ["24.x", "25.x"]
+        nodeVersion: ["24.x", "25.x"]
 
     steps:
-      - uses: actions/checkout@v6
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+      - name: Unit tests 🐏
+        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@7d1c074b91c71778962e63aa03aa53139c6ecb7d
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn test
+          nodeVersion: ${{ matrix.nodeVersion }}
