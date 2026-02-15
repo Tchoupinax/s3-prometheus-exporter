@@ -4,6 +4,15 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    name: Check code quality 🫆
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check code quality 🫆
+        uses: tchoupinax/repo-config/shared-actions/steps/node/lint@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
+        with:
+          nodeVersion: 25
+
   unit-tests:
     name: Unit tests 🐏
     runs-on: ubuntu-latest
@@ -13,7 +22,7 @@ jobs:
 
     steps:
       - name: Unit tests 🐏
-        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@78b69c320bad96a160747ec8d6e966ad85eb63a5
+        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
         with:
           nodeVersion: ${{ matrix.nodeVersion }}
           command: "test"
@@ -27,7 +36,7 @@ jobs:
 
     steps:
       - name: Check build success 🦫
-        uses: tchoupinax/repo-config/shared-actions/steps/node/build@78b69c320bad96a160747ec8d6e966ad85eb63a5
+        uses: tchoupinax/repo-config/shared-actions/steps/node/build@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
         with:
           nodeVersion: ${{ matrix.nodeVersion }}
 
@@ -40,10 +49,3 @@ jobs:
         with:
           appId: ${{ secrets.DEPLOY_APP_ID }}
           privateKey: ${{ secrets.DEPLOY_APP_KEY }}
-
-  lint:
-    name: Check code quality 🫆
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check code quality 🫆
-        uses: tchoupinax/repo-config/shared-actions/steps/golang/golangci@v0
