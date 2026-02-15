@@ -19,7 +19,6 @@ jobs:
     strategy:
       matrix:
         nodeVersion: ["24.x", "25.x"]
-
     steps:
       - name: Unit tests 🐏
         uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
@@ -30,15 +29,11 @@ jobs:
   build:
     name: Check build success 🦫
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        nodeVersion: ["24.x", "25.x"]
-
     steps:
       - name: Check build success 🦫
         uses: tchoupinax/repo-config/shared-actions/steps/node/build@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
         with:
-          nodeVersion: ${{ matrix.nodeVersion }}
+          nodeVersion: 25
 
   labels:
     name: Autodetect labels 🔍
