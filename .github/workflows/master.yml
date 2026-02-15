@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - "*" # TO REMOVE
 
 jobs:
   build:
