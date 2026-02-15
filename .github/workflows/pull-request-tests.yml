@@ -13,6 +13,18 @@ jobs:
 
     steps:
       - name: Unit tests 🐏
-        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@7d1c074b91c71778962e63aa03aa53139c6ecb7d
+        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@d4827aa8c40d4405843640cbfde20bd15651f852
+        with:
+          nodeVersion: ${{ matrix.nodeVersion }}
+  build:
+    name: Check build success 🦫
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nodeVersion: ["24.x", "25.x"]
+
+    steps:
+      - name: Check build success 🦫
+        uses: tchoupinax/repo-config/shared-actions/steps/node/build@d4827aa8c40d4405843640cbfde20bd15651f852
         with:
           nodeVersion: ${{ matrix.nodeVersion }}
