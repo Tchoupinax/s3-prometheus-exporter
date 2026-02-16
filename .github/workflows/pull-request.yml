@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check code quality 🫆
-        uses: tchoupinax/repo-config/shared-actions/steps/node/lint@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
+        uses: tchoupinax/repo-config/shared-actions/steps/node/lint@e4f3275d0a61712d4f8e17c6c6226d336a9f42a1
         with:
           nodeVersion: 25
 
@@ -21,7 +21,7 @@ jobs:
         nodeVersion: ["24.x", "25.x"]
     steps:
       - name: Unit tests 🐏
-        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
+        uses: tchoupinax/repo-config/shared-actions/steps/node/test-unit@e4f3275d0a61712d4f8e17c6c6226d336a9f42a1
         with:
           nodeVersion: ${{ matrix.nodeVersion }}
           command: "test"
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check build success 🦫
-        uses: tchoupinax/repo-config/shared-actions/steps/node/build@fdf8d83a0e605b3c26f9546275d12080f1aa82f2
+        uses: tchoupinax/repo-config/shared-actions/steps/node/build@e4f3275d0a61712d4f8e17c6c6226d336a9f42a1
         with:
           nodeVersion: 25
 
