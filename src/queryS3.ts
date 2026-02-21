@@ -13,9 +13,7 @@ import { logger } from "./utils/logger";
 
 // @ts-expect-error legacy
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-const prefixes: Array<string> = config.get("prefixes").split(",") ?? [
-  "default",
-];
+const prefixes: Array<string> = config.get("prefixes").split(",") ?? ["default"];
 
 const s3Client = new S3Client({
   credentials: {
@@ -39,10 +37,10 @@ export default async function (
         const backupNamesByRegex = Array.from(
           new Set(
             files
-              .map((f) => f.Key)
-              .map((key) => key?.match(prefix))
-              .filter((e) => e)
-              .map((e) => e?.[1]),
+              .map(f => f.Key)
+              .map(key => key?.match(prefix))
+              .filter(e => e)
+              .map(e => e?.[1]),
           ),
         );
 
@@ -51,22 +49,14 @@ export default async function (
             labelledPlugins[i]
               .getMesure()
               .labels(name)
-              .set(
-                labelledPlugins[i].process(
-                  files.filter((file) => file.Key?.match(name)),
-                ),
-              );
+              .set(labelledPlugins[i].process(files.filter(file => file.Key?.match(name))));
           }
         }
       } else {
         labelledPlugins[i]
           .getMesure()
           .labels(prefix)
-          .set(
-            labelledPlugins[i].process(
-              files.filter((file) => file.Key?.includes(prefix)),
-            ),
-          );
+          .set(labelledPlugins[i].process(files.filter(file => file.Key?.includes(prefix))));
       }
     }
   }
