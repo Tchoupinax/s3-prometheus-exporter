@@ -6,18 +6,18 @@
     "group:allNonMajor"
   ],
   "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
+    "automerge": true,
+    "enabled": true
   },
-  "mode": "full",
-  "prConcurrentLimit": 20,
-  "prHourlyLimit": 10,
   "labels": ["renovate"],
+  "mode": "full",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
       "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "matchUpdateTypes": ["minor", "patch"]
     }
-  ]
+  ],
+  "prConcurrentLimit": 20,
+  "prHourlyLimit": 10
 }
