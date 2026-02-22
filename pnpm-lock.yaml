@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@aws-sdk/client-s3':
-        specifier: 3.994.0
-        version: 3.994.0
+        specifier: 3.995.0
+        version: 3.995.0
       config:
         specifier: 4.3.0
         version: 4.3.0
@@ -46,14 +46,14 @@ importers:
         specifier: 25.3.0
         version: 25.3.0
       eslint:
-        specifier: ^10.0.1
+        specifier: '10'
         version: 10.0.1
       eslint-config-tchoupinax:
-        specifier: 2.0.0-rc10
-        version: 2.0.0-rc10(@eslint/markdown@7.5.1)(@typescript-eslint/utils@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(typescript@5.9.3)
+        specifier: 2.4.0
+        version: 2.4.0(@eslint/markdown@7.5.1)(@typescript-eslint/utils@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(typescript@5.9.3)
       nodemon:
-        specifier: 3.1.13
-        version: 3.1.13
+        specifier: 3.1.14
+        version: 3.1.14
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -83,8 +83,8 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-s3@3.994.0':
-    resolution: {integrity: sha512-zIVQt/XfE2zTFrcPEf8R+KRaRD1++XHMPRhxXM2kVA6NA6Aq/cFCUyYOYYwSbWLF/XeToaX1auYGn3IoZKruPQ==}
+  '@aws-sdk/client-s3@3.995.0':
+    resolution: {integrity: sha512-r+t8qrQ0m9zoovYOH+wilp/glFRB/E+blsDyWzq2C+9qmyhCAQwaxjLaHM8T/uluAmhtZQIYqOH9ILRnvWtRNw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/client-sso@3.993.0':
@@ -179,8 +179,8 @@ packages:
     resolution: {integrity: sha512-v4J8qYAWfOMcZ4MJUyatntOicTzEMaU7j3OpkRCGGFSL2NgXQ5VbxauIyORA+pxdKZ0qQG2tCQjQjZDlXEC3Ow==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/signature-v4-multi-region@3.994.0':
-    resolution: {integrity: sha512-8y04Lv497KKd7f2TVlm2RaKQaNfnY17ZH8d3m+7sW/3R3BhZvHgWQZyqTb/vcN2ERz1YAnWx6woJyB3ZNFvakw==}
+  '@aws-sdk/signature-v4-multi-region@3.995.0':
+    resolution: {integrity: sha512-9Qx5JcAucnxnomREPb2D6L8K8GLG0rknt3+VK/BU3qTUynAcV4W21DQ04Z2RKDw+DYpW88lsZpXbVetWST2WUg==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/token-providers@3.993.0':
@@ -199,8 +199,8 @@ packages:
     resolution: {integrity: sha512-j6vioBeRZ4eHX4SWGvGPpwGg/xSOcK7f1GL0VM+rdf3ZFTIsUEhCFmD78B+5r2PgztcECSzEfvHQX01k8dPQPw==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/util-endpoints@3.994.0':
-    resolution: {integrity: sha512-L2obUBw4ACMMd1F/SG5LdfPyZ0xJNs9Maifwr3w0uWO+4YvHmk9FfRskfSfE/SLZ9S387oSZ+1xiP7BfVCP/Og==}
+  '@aws-sdk/util-endpoints@3.995.0':
+    resolution: {integrity: sha512-aym/pjB8SLbo9w2nmkrDdAAVKVlf7CM71B9mKhjDbJTzwpSFBPHqJIMdDyj0mLumKC0aIVDr1H6U+59m9GvMFw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/util-locate-window@3.965.4':
@@ -1366,8 +1366,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-tchoupinax@2.0.0-rc10:
-    resolution: {integrity: sha512-t9JgFV8Mz69WkBIpsuFZYa9E2M8Ob5pedlgdG8KDCvDJpV9IilXZy0PmH8qD7/xHQ2qhX0N6VlBNVR790kiPlA==}
+  eslint-config-tchoupinax@2.4.0:
+    resolution: {integrity: sha512-DPFRuZR/C85QSMUocjPXUfh3wRbrj9Iy7vZluNAVmJzS9RwnyuYd3cDSkW2cSmR1bWbtFKqvi+JhJ4PeBvBrsA==}
 
   eslint-import-context@0.1.9:
     resolution: {integrity: sha512-K9Hb+yRaGAGUbwjhFNHvSmmkZs9+zbuoe3kFQ4V1wYjrepUFYM2dZAfNtjbbj3qsPfUfsA68Bx/ICWQMi+C8Eg==}
@@ -1441,6 +1441,12 @@ packages:
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       eslint: '>=9.38.0'
+
+  eslint-plugin-perfectionist@5.6.0:
+    resolution: {integrity: sha512-pxrLrfRp5wl1Vol1fAEa/G5yTXxefTPJjz07qC7a8iWFXcOZNuWBItMQ2OtTzfQIvMq6bMyYcrzc3Wz++na55Q==}
+    engines: {node: ^20.0.0 || >=22.0.0}
+    peerDependencies:
+      eslint: ^8.45.0 || ^9.0.0 || ^10.0.0
 
   eslint-plugin-simple-import-sort@12.1.1:
     resolution: {integrity: sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==}
@@ -2015,8 +2021,12 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  nodemon@3.1.13:
-    resolution: {integrity: sha512-nPN6L7A9cTA3BnJ3zZIibH5FiDh3GbmibeS17bl5YEU1IRO2mcfvR0ZJXH3ndoeKItjUcaX81FSKc/Kq/IiG6g==}
+  natural-orderby@5.0.0:
+    resolution: {integrity: sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg==}
+    engines: {node: '>=18'}
+
+  nodemon@3.1.14:
+    resolution: {integrity: sha512-jakjZi93UtB3jHMWsXL68FXSAosbLfY0In5gtKq3niLSkrWznrVBzXFNOEMJUfc9+Ke7SHWoAZsiMkNP3vq6Jw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2607,7 +2617,7 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.994.0':
+  '@aws-sdk/client-s3@3.995.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
@@ -2625,9 +2635,9 @@ snapshots:
       '@aws-sdk/middleware-ssec': 3.972.3
       '@aws-sdk/middleware-user-agent': 3.972.11
       '@aws-sdk/region-config-resolver': 3.972.3
-      '@aws-sdk/signature-v4-multi-region': 3.994.0
+      '@aws-sdk/signature-v4-multi-region': 3.995.0
       '@aws-sdk/types': 3.973.1
-      '@aws-sdk/util-endpoints': 3.994.0
+      '@aws-sdk/util-endpoints': 3.995.0
       '@aws-sdk/util-user-agent-browser': 3.972.3
       '@aws-sdk/util-user-agent-node': 3.972.10
       '@smithy/config-resolver': 4.4.6
@@ -2980,7 +2990,7 @@ snapshots:
       '@smithy/types': 4.12.0
       tslib: 2.8.1
 
-  '@aws-sdk/signature-v4-multi-region@3.994.0':
+  '@aws-sdk/signature-v4-multi-region@3.995.0':
     dependencies:
       '@aws-sdk/middleware-sdk-s3': 3.972.11
       '@aws-sdk/types': 3.973.1
@@ -3018,7 +3028,7 @@ snapshots:
       '@smithy/util-endpoints': 3.2.8
       tslib: 2.8.1
 
-  '@aws-sdk/util-endpoints@3.994.0':
+  '@aws-sdk/util-endpoints@3.995.0':
     dependencies:
       '@aws-sdk/types': 3.973.1
       '@smithy/types': 4.12.0
@@ -4279,7 +4289,7 @@ snapshots:
     dependencies:
       eslint: 10.0.1
 
-  eslint-config-tchoupinax@2.0.0-rc10(@eslint/markdown@7.5.1)(@typescript-eslint/utils@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(typescript@5.9.3):
+  eslint-config-tchoupinax@2.4.0(@eslint/markdown@7.5.1)(@typescript-eslint/utils@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(typescript@5.9.3):
     dependencies:
       '@stylistic/eslint-plugin': 5.9.0(eslint@10.0.1)
       '@typescript-eslint/parser': 8.56.0(eslint@10.0.1)(typescript@5.9.3)
@@ -4288,6 +4298,7 @@ snapshots:
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint@10.0.1)
       eslint-plugin-import-x: 4.16.1(@typescript-eslint/utils@8.56.0(eslint@10.0.1)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@10.0.1)
       eslint-plugin-jsonc: 3.0.0(@eslint/markdown@7.5.1)(eslint@10.0.1)
+      eslint-plugin-perfectionist: 5.6.0(eslint@10.0.1)(typescript@5.9.3)
       eslint-plugin-simple-import-sort: 12.1.1(eslint@10.0.1)
       typescript-eslint: 8.56.0(eslint@10.0.1)(typescript@5.9.3)
     transitivePeerDependencies:
@@ -4394,6 +4405,15 @@ snapshots:
     transitivePeerDependencies:
       - '@eslint/json'
       - '@eslint/markdown'
+
+  eslint-plugin-perfectionist@5.6.0(eslint@10.0.1)(typescript@5.9.3):
+    dependencies:
+      '@typescript-eslint/utils': 8.56.0(eslint@10.0.1)(typescript@5.9.3)
+      eslint: 10.0.1
+      natural-orderby: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-plugin-simple-import-sort@12.1.1(eslint@10.0.1):
     dependencies:
@@ -5179,7 +5199,9 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  nodemon@3.1.13:
+  natural-orderby@5.0.0: {}
+
+  nodemon@3.1.14:
     dependencies:
       chokidar: 3.6.0
       debug: 4.4.3(supports-color@5.5.0)

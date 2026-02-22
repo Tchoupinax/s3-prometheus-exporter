@@ -27,7 +27,7 @@ async function main(): Promise<void> {
   labelledPlugins = [
     ...labelledPlugins,
     ...(await Promise.all(
-      prefixedPluginsFileNames.map(async (filename) => {
+      prefixedPluginsFileNames.map(async filename => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { default: LocalClass } = await import(path.join(__dirname, "metrics/prefixed", filename));
 
@@ -42,7 +42,7 @@ async function main(): Promise<void> {
   }
 
   globalPlugins = await Promise.all(
-    globalPluginsFileNames.map(async (filename) => {
+    globalPluginsFileNames.map(async filename => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { default: LocalClass } = await import(path.join(__dirname, "metrics/global", filename));
 
