@@ -13,29 +13,23 @@ let globalPlugins: InstanceType<typeof Metric>[] = [];
 let labelledPlugins: InstanceType<typeof Metric>[] = [];
 const register = new Registry();
 
-const prefixedPluginsFileNames = readdirSync(
-  path.join(__dirname, "/metrics/prefixed"),
-)
-  .filter((name) => !name.includes("metric."))
-  .filter((name) => !name.includes("spec"))
-  .filter((name) => name.endsWith(".js") || name.endsWith(".ts"));
+const prefixedPluginsFileNames = readdirSync(path.join(__dirname, "/metrics/prefixed"))
+  .filter(name => !name.includes("metric."))
+  .filter(name => !name.includes("spec"))
+  .filter(name => name.endsWith(".js") || name.endsWith(".ts"));
 
-const globalPluginsFileNames = readdirSync(
-  path.join(__dirname, "/metrics/global"),
-)
-  .filter((name) => !name.includes("metric."))
-  .filter((name) => !name.includes("spec"))
-  .filter((name) => name.endsWith(".js") || name.endsWith(".ts"));
+const globalPluginsFileNames = readdirSync(path.join(__dirname, "/metrics/global"))
+  .filter(name => !name.includes("metric."))
+  .filter(name => !name.includes("spec"))
+  .filter(name => name.endsWith(".js") || name.endsWith(".ts"));
 
 async function main(): Promise<void> {
   labelledPlugins = [
     ...labelledPlugins,
     ...(await Promise.all(
-      prefixedPluginsFileNames.map(async (filename) => {
+      prefixedPluginsFileNames.map(async filename => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const { default: LocalClass } = await import(
-          path.join(__dirname, "metrics/prefixed", filename)
-        );
+        const { default: LocalClass } = await import(path.join(__dirname, "metrics/prefixed", filename));
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         return new LocalClass() as InstanceType<typeof Metric>;
@@ -44,17 +38,13 @@ async function main(): Promise<void> {
   ];
 
   for (let i = 0; i < prefixedPluginsFileNames.length; i++) {
-    labelledPlugins[i].saveMesure(
-      labelledPlugins[i].declarePrometheusMesure(register),
-    );
+    labelledPlugins[i].saveMesure(labelledPlugins[i].declarePrometheusMesure(register));
   }
 
   globalPlugins = await Promise.all(
-    globalPluginsFileNames.map(async (filename) => {
+    globalPluginsFileNames.map(async filename => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const { default: LocalClass } = await import(
-        path.join(__dirname, "metrics/global", filename)
-      );
+      const { default: LocalClass } = await import(path.join(__dirname, "metrics/global", filename));
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       return new LocalClass() as InstanceType<typeof Metric>;
@@ -62,9 +52,7 @@ async function main(): Promise<void> {
   );
 
   for (let i = 0; i < globalPluginsFileNames.length; i++) {
-    globalPlugins[i].saveMesure(
-      globalPlugins[i].declarePrometheusMesure(register),
-    );
+    globalPlugins[i].saveMesure(globalPlugins[i].declarePrometheusMesure(register));
   }
 
   const app = Fastify();
@@ -79,9 +67,7 @@ async function main(): Promise<void> {
       return reply.send(await register.metrics());
     } catch (err) {
       logger.error(err);
-      return reply
-        .status(500)
-        .send("Internal error, please give a look to logs.\n");
+      return reply.status(500).send("Internal error, please give a look to logs.\n");
     }
   });
 
