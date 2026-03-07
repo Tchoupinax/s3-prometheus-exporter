@@ -12,7 +12,7 @@ jobs:
         uses: tchoupinax/repo-config/shared-actions/steps/node/lint@v0
         with:
           nodeVersion: 25
-          pnpmVersion: 10.30.1
+          pnpmVersion: 10
 
   unit-tests:
     name: Unit tests 🐏
@@ -26,7 +26,7 @@ jobs:
         with:
           nodeVersion: ${{ matrix.nodeVersion }}
           command: "test"
-          pnpmVersion: 10.30.1
+          pnpmVersion: 10
 
   build:
     name: Check build success 🦫
@@ -36,7 +36,7 @@ jobs:
         uses: tchoupinax/repo-config/shared-actions/steps/node/build@v0
         with:
           nodeVersion: 25
-          pnpmVersion: 10.30.1
+          pnpmVersion: 10
 
   labels:
     name: Autodetect labels 🔍
