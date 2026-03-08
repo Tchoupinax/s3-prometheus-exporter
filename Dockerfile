@@ -2,13 +2,15 @@ FROM node:25-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock /app/
+RUN npm i -g pnpm
 
-RUN yarn
+COPY package.json pnpm-lock.yaml /app/
+
+RUN pnpm install
 
 COPY . .
 
-RUN yarn build
+RUN pnpm build
 
 ###
 
@@ -16,14 +18,14 @@ FROM node:25-alpine
 
 WORKDIR /app
 
-COPY --chown=node:node package.json yarn.lock /app/
+RUN npm i -g pnpm
 
-RUN yarn install --production
+COPY --chown=node:node package.json pnpm-lock.yaml /app/
 
+RUN pnpm install --production
 RUN mkdir src
 
 COPY --chown=node:node --from=builder /app/dist src/
-
 COPY --chown=node:node  config config
 
 USER node
