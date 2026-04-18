@@ -20,8 +20,8 @@ LABEL MAINTAINER="Tchoupinax <corentinfiloche@hotmail.fr>"
 
 WORKDIR /app
 
-RUN adduser --system --uid 999 s3-prometheus-exporter && \
-    addgroup --system --gid 999 s3-prometheus-exporter
+RUN adduser --system --uid 1001 s3-prometheus-exporter && \
+    addgroup --system --gid 1001 s3-prometheus-exporter
 
 RUN npm i -g pnpm
 
