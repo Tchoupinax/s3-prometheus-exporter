@@ -16,7 +16,12 @@ RUN pnpm build
 
 FROM node:25-alpine
 
+LABEL MAINTAINER="Tchoupinax <corentinfiloche@hotmail.fr>"
+
 WORKDIR /app
+
+RUN adduser --system --uid 999 s3-prometheus-exporter && \
+    addgroup --system --gid 999 s3-prometheus-exporter
 
 RUN npm i -g pnpm
 
@@ -28,6 +33,6 @@ RUN mkdir src
 COPY --chown=node:node --from=builder /app/dist src/
 COPY --chown=node:node  config config
 
-USER node
+USER s3-prometheus-exporter
 
-CMD node src/index.js
+CMD ["node", "src/index.js"]
