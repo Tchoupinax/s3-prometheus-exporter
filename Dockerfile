@@ -1,4 +1,4 @@
-FROM node:25-alpine AS builder
+FROM node:26-alpine AS builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN pnpm build
 
 ###
 
-FROM node:25-alpine
+FROM node:26-alpine
 
 LABEL MAINTAINER="Tchoupinax <corentinfiloche@hotmail.fr>"
 
