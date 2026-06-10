@@ -13,7 +13,7 @@
     "url": "https://github.com/Tchoupinax/s3-exporter/issues"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "lint": "eslint --fix .",
     "s3": "docker compose up -d",
     "security": "trivy fs --security-checks vuln,config .",
