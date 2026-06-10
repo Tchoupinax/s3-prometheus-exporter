@@ -9,8 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
-    "module": "Node16",
-    "moduleResolution": "node16",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "rootDir": "./src",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -27,5 +27,5 @@
     "target": "ES2022"
   },
   "exclude": ["node_modules"],
-  "include": ["src"]
+  "include": ["src/**/*.mts"]
 }

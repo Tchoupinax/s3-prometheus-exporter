@@ -2,7 +2,7 @@ import { _Object } from "@aws-sdk/client-s3";
 
 import { beforeEach, describe, expect, it } from "vitest";
 
-import MetricLatestFileSize from "./metric-latest-file-size";
+import MetricLatestFileSize from "./metric-latest-file-size.mjs";
 
 describe("metric latest file size", () => {
   let metricLatestFileSize: MetricLatestFileSize;

@@ -2,11 +2,11 @@ import { _Object } from "@aws-sdk/client-s3";
 
 import { Gauge, Registry } from "prom-client";
 
-import { Metric } from "./../metric";
+import { Metric } from "../metric.mjs";
 
 export default class extends Metric {
-  constructor() {
-    super("global_files_count", "global");
+  constructor(prefix: string) {
+    super("files_count", prefix);
   }
 
   declarePrometheusMesure(register: Registry): Gauge<string> {

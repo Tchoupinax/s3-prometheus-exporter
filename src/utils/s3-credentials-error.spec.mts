@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { isS3CredentialsError } from "./s3-credentials-error";
+import { isS3CredentialsError } from "./s3-credentials-error.mjs";
 
 describe("isS3CredentialsError", () => {
   it("detects InvalidAccessKeyId from Code", () => {

@@ -35,4 +35,4 @@ COPY --chown=node:node  config config
 
 USER s3-prometheus-exporter
 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/index.mjs"]
