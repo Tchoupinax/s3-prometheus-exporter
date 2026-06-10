@@ -4,9 +4,9 @@ WORKDIR /app
 
 RUN npm i -g pnpm
 
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml /app/
 
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
@@ -25,9 +25,9 @@ RUN adduser --system --uid 1001 s3-prometheus-exporter && \
 
 RUN npm i -g pnpm
 
-COPY --chown=node:node package.json pnpm-lock.yaml /app/
+COPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml /app/
 
-RUN pnpm install --production
+RUN pnpm install --production --frozen-lockfile
 RUN mkdir src
 
 COPY --chown=node:node --from=builder /app/dist src/
