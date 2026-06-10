@@ -10,6 +10,11 @@ import config from "config";
 import { Metric } from "./metrics/metric";
 import { isValidRegex } from "./utils/is-valid-regex";
 import { logger } from "./utils/logger";
+import {
+  CONNECTION_HEALTH_METRIC_NAME,
+  isS3CredentialsError,
+  setConnectionHealth,
+} from "./utils/s3-credentials-error";
 
 // @ts-expect-error legacy
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
@@ -29,7 +34,19 @@ export default async function (
   labelledPlugins: InstanceType<typeof Metric>[],
   globalPlugins: InstanceType<typeof Metric>[],
 ): Promise<void> {
-  const files = await listAllContents({ Bucket: config.get("bucket") });
+  let files: _Object[];
+
+  try {
+    files = await listAllContents({ Bucket: config.get("bucket") });
+  } catch (err) {
+    if (isS3CredentialsError(err)) {
+      setConnectionHealth(globalPlugins, 0);
+      logger.warn("S3 credentials rejected, %s=0", CONNECTION_HEALTH_METRIC_NAME);
+      return;
+    }
+
+    throw err;
+  }
 
   for (let i = 0; i < labelledPlugins.length; i++) {
     for (const prefix of prefixes) {

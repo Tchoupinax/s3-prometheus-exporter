@@ -8,6 +8,7 @@ import { Registry } from "prom-client";
 import { Metric } from "./metrics/metric";
 import queryS3 from "./queryS3";
 import { logger } from "./utils/logger";
+import { isS3CredentialsError, setConnectionHealth } from "./utils/s3-credentials-error";
 
 let globalPlugins: InstanceType<typeof Metric>[] = [];
 let labelledPlugins: InstanceType<typeof Metric>[] = [];
@@ -66,6 +67,13 @@ async function main(): Promise<void> {
 
       return reply.send(await register.metrics());
     } catch (err) {
+      if (isS3CredentialsError(err)) {
+        setConnectionHealth(globalPlugins, 0);
+        logger.warn(err, "S3 credentials rejected, s3_connection_health=0");
+        reply.header("Content-Type", register.contentType);
+        return reply.send(await register.metrics());
+      }
+
       logger.error(err);
       return reply.status(500).send("Internal error, please give a look to logs.\n");
     }
