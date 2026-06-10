@@ -2,17 +2,17 @@ import { _Object } from "@aws-sdk/client-s3";
 
 import { Gauge, Registry } from "prom-client";
 
-import { Metric } from "../metric";
+import { Metric } from "../metric.mjs";
 
 export default class extends Metric {
   constructor() {
-    super("global_bucket_size", "global");
+    super("global_biggest_file_size", "global");
   }
 
   declarePrometheusMesure(register: Registry): Gauge<string> {
     return new Gauge({
       name: this.name(),
-      help: "Size of the bucket (in Bytes)",
+      help: "Biggest file size",
       labelNames: ["name"],
       registers: [register],
     });
@@ -20,7 +20,11 @@ export default class extends Metric {
 
   process(files: _Object[]): number {
     return files.reduce((acc: number, cur: _Object) => {
-      return cur.Size! + acc;
+      if (cur.Size && acc < cur.Size) {
+        return cur.Size;
+      } else {
+        return acc;
+      }
     }, 0);
   }
 }

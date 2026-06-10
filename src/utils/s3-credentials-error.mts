@@ -1,4 +1,4 @@
-import { Metric } from "../metrics/metric";
+import { Metric } from "../metrics/metric.mjs";
 
 export const CONNECTION_HEALTH_METRIC_NAME = "s3_connection_health";
 

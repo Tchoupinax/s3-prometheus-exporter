@@ -7,14 +7,14 @@ import {
 
 import config from "config";
 
-import { Metric } from "./metrics/metric";
-import { isValidRegex } from "./utils/is-valid-regex";
-import { logger } from "./utils/logger";
+import { Metric } from "./metrics/metric.mjs";
+import { isValidRegex } from "./utils/is-valid-regex.mjs";
+import { logger } from "./utils/logger.mjs";
 import {
   CONNECTION_HEALTH_METRIC_NAME,
   isS3CredentialsError,
   setConnectionHealth,
-} from "./utils/s3-credentials-error";
+} from "./utils/s3-credentials-error.mjs";
 
 // @ts-expect-error legacy
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
@@ -30,7 +30,7 @@ const s3Client = new S3Client({
   forcePathStyle: config.get("region") ?? false,
 });
 
-export default async function (
+export async function queryS3(
   labelledPlugins: InstanceType<typeof Metric>[],
   globalPlugins: InstanceType<typeof Metric>[],
 ): Promise<void> {

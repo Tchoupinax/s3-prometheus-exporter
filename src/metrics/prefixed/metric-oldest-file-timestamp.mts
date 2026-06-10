@@ -2,7 +2,7 @@ import { _Object } from "@aws-sdk/client-s3";
 
 import { Gauge, Registry } from "prom-client";
 
-import { Metric } from "../metric";
+import { Metric } from "../metric.mjs";
 
 export default class extends Metric {
   constructor(prefix: string) {
