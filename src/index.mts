@@ -5,7 +5,7 @@ import Fastify, { type FastifyReply } from "fastify";
 import { Registry } from "prom-client";
 
 import type { Metric } from "./metrics/metric.mjs";
-import queryS3 from "./queryS3.mjs";
+import { queryS3 } from "./queryS3.mjs";
 import { logger } from "./utils/logger.mjs";
 import { isS3CredentialsError, setConnectionHealth } from "./utils/s3-credentials-error.mjs";
 

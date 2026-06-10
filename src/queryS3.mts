@@ -30,7 +30,7 @@ const s3Client = new S3Client({
   forcePathStyle: config.get("region") ?? false,
 });
 
-export default async function queryS3(
+export async function queryS3(
   labelledPlugins: InstanceType<typeof Metric>[],
   globalPlugins: InstanceType<typeof Metric>[],
 ): Promise<void> {
