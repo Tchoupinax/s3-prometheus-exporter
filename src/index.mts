@@ -70,6 +70,13 @@ app.get("/metrics", async (_, reply: FastifyReply) => {
       return reply.send(await register.metrics());
     }
 
+    if (err instanceof Error && err.message.includes("does not match certificate")) {
+      setConnectionHealth(globalPlugins, 0);
+      logger.warn(err, "S3 credentials rejected, s3_connection_health=0");
+      reply.header("Content-Type", register.contentType);
+      return reply.send(await register.metrics());
+    }
+
     logger.error(err);
     return reply.status(500).send("Internal error, please give a look to logs.\n");
   }
