@@ -22,7 +22,7 @@
     "watch": "nodemon --ext mts,json --exec vite-node --options.deps.inline=\"@aws-sdk\" src/index.mts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1060.0",
+    "@aws-sdk/client-s3": "3.1065.0",
     "config": "4.4.1",
     "fastify": "5.8.5",
     "moment": "2.30.1",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/config": "4.4.0",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "eslint": "10",
     "eslint-config-tchoupinax": "2.6.0",
     "nodemon": "3.1.14",
