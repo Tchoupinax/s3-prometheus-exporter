@@ -27,7 +27,7 @@ const s3Client = new S3Client({
   },
   endpoint: config.get("endpoint"),
   region: config.get("region"),
-  forcePathStyle: config.get("region") ?? false,
+  forcePathStyle: config.get("forcePathStyle") ?? false,
 });
 
 export async function queryS3(
@@ -51,23 +51,32 @@ export async function queryS3(
   for (let i = 0; i < labelledPlugins.length; i++) {
     for (const prefix of prefixes) {
       if (isValidRegex(prefix)) {
+        const regex = new RegExp(prefix);
+        const getLabelFromMatch = (match: RegExpMatchArray): string | undefined =>
+          match.length > 1 ? match.at(-1) : undefined;
+
         const backupNamesByRegex = Array.from(
           new Set(
             files
-              .map(f => f.Key)
-              .map(key => key?.match(prefix))
-              .filter(e => e)
-              .map(e => e?.[1]),
+              .map(f => f.Key?.match(regex))
+              .filter((match): match is RegExpMatchArray => match !== null && match !== undefined)
+              .map(getLabelFromMatch)
+              .filter((name): name is string => name !== undefined),
           ),
         );
 
         for (const name of backupNamesByRegex) {
-          if (name) {
-            labelledPlugins[i]
-              .getMesure()
-              .labels(name)
-              .set(labelledPlugins[i].process(files.filter(file => file.Key?.match(name))));
-          }
+          labelledPlugins[i]
+            .getMesure()
+            .labels(name)
+            .set(
+              labelledPlugins[i].process(
+                files.filter(file => {
+                  const match = file.Key?.match(regex);
+                  return match !== null && match !== undefined && getLabelFromMatch(match) === name;
+                }),
+              ),
+            );
         }
       } else {
         labelledPlugins[i]
