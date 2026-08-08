@@ -12,8 +12,8 @@ importers:
         specifier: 3.1103.0
         version: 3.1103.0
       config:
-        specifier: 4.4.2
-        version: 4.4.2
+        specifier: 5.0.0
+        version: 5.0.0
       fastify:
         specifier: 5.11.2
         version: 5.11.2
@@ -751,9 +751,9 @@ packages:
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
-  config@4.4.2:
-    resolution: {integrity: sha512-5HJD7TX70gOG2dAd72eDjDeSTYn6D8nOiKgysQQS8mRUo9X1wDtlzb1JlmIWkP+sM9zKRVdYJxmj+qmCsYu6DQ==}
-    engines: {node: '>= 20.0.0'}
+  config@5.0.0:
+    resolution: {integrity: sha512-LaZ/Z113nYJ4YNrH13dWdHvgIehYACiJZPxFVK8ykqO+6CaMAiJ7NkyrxTPAimMJoIKn7qPrvTFzIBPgm4/SLA==}
+    engines: {node: '>= 20.11.0'}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -2422,7 +2422,7 @@ snapshots:
 
   '@types/config@4.4.0':
     dependencies:
-      config: 4.4.2
+      config: 5.0.0
 
   '@types/deep-eql@4.0.2': {}
 
@@ -2798,7 +2798,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  config@4.4.2:
+  config@5.0.0:
     dependencies:
       json5: 2.2.3
 
