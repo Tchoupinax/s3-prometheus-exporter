@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1108.0",
-    "config": "4.4.2",
+    "config": "5.0.0",
     "fastify": "5.11.3",
     "moment": "2.30.1",
     "pino": "10.3.1",
