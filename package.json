@@ -39,7 +39,7 @@
     "eslint": "10",
     "eslint-config-tchoupinax": "2.6.1",
     "nodemon": "3.1.14",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "packageManager": "pnpm@11.21.0"
 }
