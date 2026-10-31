@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/config": "4.4.0",
-    "@types/node": "25.9.9",
+    "@types/node": "26.6.5",
     "eslint": "10",
     "eslint-config-tchoupinax": "2.6.1",
     "nodemon": "3.1.14",
