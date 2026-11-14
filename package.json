@@ -22,7 +22,7 @@
     "watch": "nodemon --ext mts,json --exec vite-node --options.deps.inline=\"@aws-sdk\" src/index.mts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.1161.0",
+    "@aws-sdk/client-s3": "3.1166.0",
     "config": "5.0.1",
     "fastify": "5.12.8",
     "moment": "2.31.0",
@@ -41,5 +41,5 @@
     "nodemon": "3.1.14",
     "typescript": "6.0.3"
   },
-  "packageManager": "pnpm@12.17.0"
+  "packageManager": "pnpm@12.18.0"
 }
